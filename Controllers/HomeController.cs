@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PawKarTIWypozyczalnia.DAL;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,21 +11,28 @@ namespace PawKarTIWypozyczalnia.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private FilmsContext db;
+
+        public HomeController(FilmsContext db)
         {
-            _logger = logger;
+            this.db = db;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var kategorie = db.Kategorie.ToList();
+            return View(kategorie);
         }
 
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult StronyStatyczne(string name)
+        {
+            return View(name);
         }
     }
 }

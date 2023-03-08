@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PawKarTIWypozyczalnia.Models.Kategoria>
+
+<html>
+<head>
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Wypozyczalnia @ViewData["Title"]</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    @foreach (var kategoria in Model)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">@kategoria.Name</a>
+                            </li>
+                    }
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="main-page">
+        @RenderBody()
+    </main>
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <p class="col-md-4 mb-0 text-muted">&copy; 2023 Paweł Karbowski</p>
+            <ul class="nav col-md-4 justify-content-end">
+                <li class="nav-item"><a href="@Url.Action("StronyStatyczne","Home",new { name="Onas" })" class="nav-link px-1 text-muted">O nas</a></li>
+                <li class="nav-item"><a href="@Url.Action("StronyStatyczne","Home",new { name="Regulamin" })" class="nav-link px-1 text-muted">Regulamin</a></li>
+                <li class="nav-item"><a href="@Url.Action("StronyStatyczne","Home",new { name="MetodyPlatnosci" })" class="nav-link px-1 text-muted">Metody płatności</a></li>
+                <li class="nav-item"><a href="@Url.Action("StronyStatyczne","Home",new { name="Kontakt" })" class="nav-link px-1 text-muted">Kontakt</a></li>
+            </ul>
+        </footer>
+    </div>
+</body>
+</html>

@@ -52,6 +52,11 @@ namespace PawKarTIWypozyczalnia
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "StronyStatyczne",
+                    pattern: "Info/{name}",
+                    defaults: new { controller="Home", action="StronyStatyczne" }
+                    );
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
