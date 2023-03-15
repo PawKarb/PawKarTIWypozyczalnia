@@ -1,0 +1,14 @@
+﻿@model IEnumerable<PawKarTIWypozyczalnia.Models.Kategoria>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            @foreach (var kategoria in Model)
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("FilmsList", "Films", new {categoryName = kategoria.Name})">@kategoria.Name</a>
+                </li>
+            }
+        </ul>
+    </div>
+</nav>

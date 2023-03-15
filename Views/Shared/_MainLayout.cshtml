@@ -1,6 +1,4 @@
-﻿@model IEnumerable<PawKarTIWypozyczalnia.Models.Kategoria>
-
-<html>
+﻿<html>
 <head>
     <link href="~/css/site.css" rel="stylesheet" />
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -8,18 +6,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    @foreach (var kategoria in Model)
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">@kategoria.Name</a>
-                            </li>
-                    }
-                </ul>
-            </div>
-        </nav>
+        @(await Component.InvokeAsync("Menu"))
     </header>
     <main class="main-page">
         @RenderBody()
