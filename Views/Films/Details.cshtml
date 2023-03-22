@@ -1,0 +1,22 @@
+﻿@model PawKarTIWypozyczalnia.Models.Film
+
+
+<div>
+    <table>
+        <tr>
+            <td>
+                <h1>@Model.Kategoria.Name</h1>
+                @await Component.InvokeAsync("CategoryFilmsMenu",new { categoryName = Model.Kategoria.Name})
+            </td>
+            <td>
+                <ul>
+                    <li>Tytuł: @Model.Title</li>
+                    <li>Reżyser: @Model.Director</li>
+                    <li>Opis: @Model.Desc</li>
+                    <li>Cena: @Model.Price</li>
+                    <li>Data dodania: @Model.Date</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>

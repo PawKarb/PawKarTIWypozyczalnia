@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace PawKarTIWypozyczalnia.Models
 {
@@ -16,6 +17,8 @@ namespace PawKarTIWypozyczalnia.Models
         public string Desc { get; set; }
 
         public decimal Price { get; set; }
+
+        public DateTime Date { get; set; }
 
         public int KategoriaId { get; set; }
 

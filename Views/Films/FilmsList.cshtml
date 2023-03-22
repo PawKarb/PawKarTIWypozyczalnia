@@ -1,6 +1,22 @@
-﻿@model IEnumerable<PawKarTIWypozyczalnia.Models.Film>
+﻿@model PawKarTIWypozyczalnia.ViewModels.CategoryFilmsViewModel
+
+@{
+    ViewData["Title"] = Model.Category.Name;
+}
 
 <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<table class="table-bordered">
+    <tr>
+        @foreach (var film in Model.RecentFilms)
+        {
+            <td class="text-center">
+                <h2>@film.Title</h2>
+                <p>@film.Desc</p>
+            </td>    
+        }
+    </tr>
+</table>
+<h1>@Model.Category.Name</h1>
 <table class="table table-striped table-responsive table-bordered w-auto">
     <thead>
         <tr>
@@ -8,16 +24,18 @@
             <th>Reżyser</th>
             <th>Opis</th>
             <th>Cena</th>
+            <th>Szczegóły</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var film in Model)
+        @foreach (var film in Model.CategoryFilms)
         {
             <tr>
                 <td>@film.Title</td>
                 <td>@film.Director</td>
                 <td>@film.Desc</td>
                 <td>@film.Price</td>
+                <td><a href="@Url.Action("Details","Films",new { filmId = film.Id})">&#128269</a></td>
             </tr>
         }
     </tbody>
