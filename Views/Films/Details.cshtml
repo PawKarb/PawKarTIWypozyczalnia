@@ -2,13 +2,13 @@
 
 
 <div>
-    <table>
+    <table width="100%">
         <tr>
-            <td>
+            <td width="25%">
                 <h1>@Model.Kategoria.Name</h1>
                 @await Component.InvokeAsync("CategoryFilmsMenu",new { categoryName = Model.Kategoria.Name})
             </td>
-            <td>
+            <td width="75%">
                 <ul>
                     <li>Tytuł: @Model.Title</li>
                     <li>Reżyser: @Model.Director</li>

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace PawKarTIWypozyczalnia.ViewComponents
 {
-    public class CategoryFilmsMenuComponent : ViewComponent
+    public class CategoryFilmsMenuViewComponent : ViewComponent
     {
         FilmsContext db;
 
-        public CategoryFilmsMenuComponent(FilmsContext db)
+        public CategoryFilmsMenuViewComponent(FilmsContext db)
         {
             this.db = db;
         }

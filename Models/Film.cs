@@ -20,6 +20,8 @@ namespace PawKarTIWypozyczalnia.Models
 
         public DateTime Date { get; set; }
 
+        public string PosterName { get; set; }
+
         public int KategoriaId { get; set; }
 
         public Kategoria Kategoria { get; set; }

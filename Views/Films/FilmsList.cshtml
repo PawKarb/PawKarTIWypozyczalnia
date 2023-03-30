@@ -5,13 +5,13 @@
 }
 
 <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-<table class="table-bordered">
+<table class="table-bordered" style="width: 100%">
     <tr>
         @foreach (var film in Model.RecentFilms)
         {
-            <td class="text-center">
+            <td style="text-align:center;">
                 <h2>@film.Title</h2>
-                <p>@film.Desc</p>
+                <img src="~/content/@film.PosterName" width="200px" height="300px"/>
             </td>    
         }
     </tr>

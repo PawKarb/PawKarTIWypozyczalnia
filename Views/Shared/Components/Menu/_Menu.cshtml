@@ -9,6 +9,9 @@
                     <a class="nav-link" href="@Url.Action("FilmsList", "Films", new {categoryName = kategoria.Name})">@kategoria.Name</a>
                 </li>
             }
+            <li class="nav-item">
+                <a style="color:lightcoral;" class="nav-link" href="@Url.Action("GetAllFilms", "Films")">Wszystkie</a>
+            </li>
         </ul>
     </div>
 </nav>

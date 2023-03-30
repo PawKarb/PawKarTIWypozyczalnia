@@ -1,0 +1,16 @@
+﻿@model IEnumerable<PawKarTIWypozyczalnia.Models.Film>
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="height:100%;">
+    <ul class="nav nav-pills flex-column mb-auto">
+        @foreach (var item in Model)
+        {
+            <li class="nav-item">
+                <a href="@Url.Action("Details", "Films", new { filmId = item.Id})" class="nav-link link-dark">
+                    @item.Title
+                </a>
+            </li>
+        }
+    </ul>
+    <hr>
+</div>

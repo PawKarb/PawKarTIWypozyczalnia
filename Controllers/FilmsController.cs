@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PawKarTIWypozyczalnia.DAL;
+using PawKarTIWypozyczalnia.Models;
 using PawKarTIWypozyczalnia.ViewModels;
 using System.Linq;
 
@@ -37,6 +38,12 @@ namespace PawKarTIWypozyczalnia.Controllers
             var category = db.Kategorie.Find(film.KategoriaId);
 
             return View(film);        
+        }
+
+        public IActionResult GetAllFilms() 
+        {
+            var films = db.Films.OrderBy(f => f.Date);
+            return View(films);
         }
     }
 }
