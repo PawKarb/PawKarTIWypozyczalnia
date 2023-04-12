@@ -1,0 +1,38 @@
+﻿@model PawKarTIWypozyczalnia.ViewModels.AddFilmViewModel
+
+
+@using (Html.BeginForm("AddFilm", "Films", FormMethod.Post, new { @enctype = "multipart/form-data"}))
+{
+    <div style="margin-left: 2%;" class="w-50">
+        <div class="form-group">
+            @Html.LabelFor(m => m.newFilm.Title, "Tytuł filmu:")
+            @Html.TextBoxFor(m => m.newFilm.Title, new { @class="form-control", @required = true })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.newFilm.Director, "Reżyser filmu:")
+            @Html.TextBoxFor(m => m.newFilm.Director, new { @class="form-control", @required = true })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.newFilm.Desc, "Opis filmu:")
+            @Html.TextBoxFor(m => m.newFilm.Desc, new { @class="form-control", @required = true })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.newFilm.Price, "Cena filmu:")
+            @Html.TextBoxFor(m => m.newFilm.Price, new { @class="form-control", @required = true, @type="number", @step=0.01 })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Poster, "Wybierz plakat:")
+            @Html.TextBoxFor(m => m.Poster, new { @class="form-control-file", @required = true, @type="file", })
+        </div>
+        <label>Wybierz kategorię filmu:</label><br />
+        <div class="form-check">
+            @foreach (var kategoria in Model.category)
+            {
+                @Html.RadioButtonFor(m => m.newFilm.KategoriaId, kategoria.Id, new { @class = "form-check-input"})
+                @Html.LabelFor(m => m.newFilm.KategoriaId, kategoria.Name, new { @class="form-check-label"})
+                <br />
+            }
+        </div><br />
+        <button type="submit" class="text-center btn btn-success">Dodaj film</button>
+    </div>
+}
