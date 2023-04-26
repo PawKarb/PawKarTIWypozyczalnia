@@ -27,6 +27,7 @@ namespace PawKarTIWypozyczalnia
         {
             services.AddControllersWithViews();
             services.AddDbContext<FilmsContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LocalDB")));
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +49,8 @@ namespace PawKarTIWypozyczalnia
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

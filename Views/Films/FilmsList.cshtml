@@ -25,6 +25,7 @@
             <th>Opis</th>
             <th>Cena</th>
             <th>Szczegóły</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -36,6 +37,7 @@
                 <td>@film.Desc</td>
                 <td>@film.Price</td>
                 <td><a href="@Url.Action("Details","Films",new { filmId = film.Id})">&#128269</a></td>
+                <td><a href="@Url.Action("AddToCart","Cart",new { Id = film.Id})">Koszyk</a></td>
             </tr>
         }
     </tbody>

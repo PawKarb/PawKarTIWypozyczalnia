@@ -1,0 +1,16 @@
+﻿@model IEnumerable<PawKarTIWypozyczalnia.Models.CartItem>
+
+<h1>Koszyk</h1>
+<table class="table table-bordered">
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.Film.Title</td>
+            <td>@item.Quantity</td>
+            <td>@item.Value</td>
+        </tr>
+    }
+</table>
+<div>
+    <h4>Razem: @ViewBag.totalPrice zł</h4>
+</div>
