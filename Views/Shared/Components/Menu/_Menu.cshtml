@@ -12,6 +12,13 @@
             <li class="nav-item">
                 <a style="color:lightcoral;" class="nav-link" href="@Url.Action("GetAllFilms", "Films")">Wszystkie</a>
             </li>
+            <li class="nav-item">
+                @using(Html.BeginForm("SearchFilms","Films"))
+                {
+                    @Html.TextBox("text")
+                    <button type="submit" class="btn btn-sm btn-info">Wyszukaj</button>
+                }
+            </li>
         </ul>
     </div>
 </nav>

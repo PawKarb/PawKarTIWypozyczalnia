@@ -1,0 +1,35 @@
+﻿@model PawKarTIWypozyczalnia.Models.Film
+
+
+<div>
+    <table width="100%">
+        <tr>
+            <td width=20%>
+                <img alt="Plakat filmu" src="~/content/@Model.PosterName" height="300px" />
+            </td>
+            <td width="60%">
+                @using(Html.BeginForm("EditFilm", "Films")){
+                    @Html.HiddenFor(f=>f.KategoriaId)
+                    @Html.HiddenFor(f=>f.PosterName)
+                    @Html.HiddenFor(f=>f.Date)
+                <ul class="list-group list-group-flush">
+                    <li class=list-group-item>Tytuł: 
+                            @Html.TextBoxFor(f=>f.Title, new {@class = "form-control", @required = true})
+                    </li>
+                    <li class=list-group-item>Reżyser: 
+                            @Html.TextBoxFor(f=>f.Director, new {@class = "form-control", @required = true})
+                    </li>
+                    <li class=list-group-item>Opis: 
+                        @Html.TextBoxFor(f=>f.Desc, new {@class = "form-control"})
+                    </li>
+                    <li class=list-group-item>Cena (w PLN): 
+                            @Html.TextBoxFor(f=>f.Price, new {@class = "form-control", @required = true})
+                    </li>
+                    <li class=list-group-item>Data dodania: @Model.Date</li><br />
+                    <button type="submit" class="w-10 btn btn-success">Zapisz zmiany</button>
+                </ul>
+                }
+            </td>
+        </tr>
+    </table>
+</div>

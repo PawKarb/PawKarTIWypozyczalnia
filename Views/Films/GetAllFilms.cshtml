@@ -7,7 +7,7 @@
         {
             <td style="text-align:center;">
                 <h2>@film.Title</h2>
-                <a class="img-thumbnail" href="@Url.Action("Details", "Films", new { filmId = film.Id})"><img src="~/content/@film.PosterName" width="200px" height="300px" /></a>
+                <a class="img-thumbnail" href="@Url.Action("Details", "Films", new { filmId = film.Id})"><img alt="Plakat filmu" src="~/content/@film.PosterName" width="200px" height="300px" /></a>
             </td>
         }
     </tr>

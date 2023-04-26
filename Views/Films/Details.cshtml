@@ -9,15 +9,16 @@
                 @await Component.InvokeAsync("CategoryFilmsMenu",new { categoryName = Model.Kategoria.Name})
             </td>
             <td width=20%>
-                <img src="~/content/@Model.PosterName" height="300px" />
+                <img alt="Plakat filmu" src="~/content/@Model.PosterName" height="300px" />
             </td>
             <td width="60%">
                 <ul class ="list-group list-group-flush">
                     <li class=list-group-item>Tytuł: @Model.Title</li>
                     <li class=list-group-item>Reżyser: @Model.Director</li>
                     <li class=list-group-item>Opis: @Model.Desc</li>
-                    <li class=list-group-item>Cena: @Model.Price</li>
+                    <li class=list-group-item>Cena: @Model.Price zł</li>
                     <li class=list-group-item>Data dodania: @Model.Date</li>
+                    <li class="list-group-item"><a class="btn btn-sm btn-primary" href="@Url.Action("EditFilm","Films",new { id = Model.Id})">Edytuj film</a></li>
                 </ul>
             </td>
         </tr>

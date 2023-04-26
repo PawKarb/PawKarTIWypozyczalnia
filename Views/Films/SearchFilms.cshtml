@@ -1,22 +1,8 @@
-﻿@model PawKarTIWypozyczalnia.ViewModels.CategoryFilmsViewModel
-
-@{
-    ViewData["Title"] = Model.Category.Name;
-}
+﻿@model IEnumerable<PawKarTIWypozyczalnia.Models.Film>
 
 <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-<table class="table-bordered" style="width: 100%">
-    <tr>
-        @foreach (var film in Model.RecentFilms)
-        {
-            <td style="text-align:center;">
-                <h2>@film.Title</h2>
-                <img alt="Plakat filmu" src="~/content/@film.PosterName" width="200px" height="300px"/>
-            </td>    
-        }
-    </tr>
-</table>
-<h1>@Model.Category.Name</h1>
+
+<h1 class="text-center">Wyszukiwane filmy</h1>
 <table class="table table-striped table-responsive table-bordered w-auto">
     <thead>
         <tr>
@@ -28,7 +14,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var film in Model.CategoryFilms)
+        @foreach (var film in Model)
         {
             <tr>
                 <td>@film.Title</td>

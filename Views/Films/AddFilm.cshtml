@@ -14,21 +14,21 @@
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.newFilm.Desc, "Opis filmu:")
-            @Html.TextBoxFor(m => m.newFilm.Desc, new { @class="form-control", @required = true })
+            @Html.TextBoxFor(m => m.newFilm.Desc, new { @class="form-control" })
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.newFilm.Price, "Cena filmu:")
-            @Html.TextBoxFor(m => m.newFilm.Price, new { @class="form-control", @required = true, @type="number", @step=0.01 })
+            @Html.TextBoxFor(m => m.newFilm.Price, new { @class="form-control", @required = true })
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.Poster, "Wybierz plakat:")
-            @Html.TextBoxFor(m => m.Poster, new { @class="form-control-file", @required = true, @type="file", })
+            @Html.TextBoxFor(m => m.Poster, new { @class="form-control-file", @required = true, @type="file" })
         </div>
         <label>Wybierz kategorię filmu:</label><br />
         <div class="form-check">
             @foreach (var kategoria in Model.category)
             {
-                @Html.RadioButtonFor(m => m.newFilm.KategoriaId, kategoria.Id, new { @class = "form-check-input"})
+                @Html.RadioButtonFor(m => m.newFilm.KategoriaId, kategoria.Id, new { @class = "form-check-input", @required = true})
                 @Html.LabelFor(m => m.newFilm.KategoriaId, kategoria.Name, new { @class="form-check-label"})
                 <br />
             }
