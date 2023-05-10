@@ -1,16 +1,62 @@
 ﻿@model IEnumerable<PawKarTIWypozyczalnia.Models.CartItem>
 
 <h1>Koszyk</h1>
-<table class="table table-bordered">
-    @foreach(var item in Model)
+<br />
+@{
+    if (Model.ToArray().Length > 0)
     {
-        <tr>
-            <td>@item.Film.Title</td>
-            <td>@item.Quantity</td>
-            <td>@item.Value</td>
-        </tr>
+        <table class="table table-striped table-responsive table-bordered w-auto">
+            <thead>
+            <tr>
+                <th>Tytuł</th>
+                <th>Ilość</th>
+                <th>Cena (PLN)</th>
+                <th>Usuń element</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr id="itemCart_@item.Film.Id">
+                    <td>@item.Film.Title</td>
+                    <td id="quantity_@item.Film.Id">@item.Quantity</td>
+                    <td>@item.Value</td>
+                    <td class="trash" data-itemid="@item.Film.Id">Kasuj</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        <div>
+            <h4 class="total_value">Razem: @ViewBag.totalPrice zł</h4>
+        </div>
     }
-</table>
-<div>
-    <h4>Razem: @ViewBag.totalPrice zł</h4>
-</div>
+    else
+    {
+        <h4>Twój koszyk jest pusty</h4>
+    }
+}
+@section Scripts
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(".trash").click(()=>{
+            let idCartItem = $(this).data('itemid');
+            if(idCartItem != '')
+            {
+                console.log(idCartItem);
+                $.post("/Cart/RemoveItem", { "Id": idCartItem }, (response) => {
+                    console.log(response);
+                    if(response.itemQuantity == 0)
+                    {
+                        $("#itemCart_"+response.itemId).fadeOut("slow");
+                    }else
+                    {
+                        $("#quantity_"+response.itemId).text(response.itemQuantity);
+                    }
+                    $("#total_value").text(response.totalValue);
+                });
+            }
+        });
+    </script>
+}

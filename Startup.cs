@@ -56,7 +56,7 @@ namespace PawKarTIWypozyczalnia
             {
                 endpoints.MapControllerRoute(
                     name: "Kategorie",
-                    pattern: "{categoryName}",
+                    pattern: "Category/{categoryName}",
                     defaults: new { controller = "Films", action = "FilmsList" }
                     );
                 endpoints.MapControllerRoute(
