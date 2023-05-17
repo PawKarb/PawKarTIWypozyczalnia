@@ -20,39 +20,14 @@ namespace PawKarTIWypozyczalnia.Controllers
         [Route("Cart")]
         public IActionResult Index()
         {
-            var cart = SessionHelper.GetObjectFromJson<List<CartItem>>(HttpContext.Session, Consts.CartSessionKey);
-
-            if (cart == null)
-            {
-                cart = new List<CartItem>();
-            }
-            ViewBag.totalPrice = cart.Sum(i => i.Value);
+            var cart = CartManager.GetItems(HttpContext.Session);
+            ViewBag.totalPrice = CartManager.GetCartValue(HttpContext.Session);
             return View(cart);
         }
+
         public IActionResult AddToCart(int Id)
         {
-            var film = db.Films.Find(Id);
-            var session = SessionHelper.GetObjectFromJson<List<CartItem>>(HttpContext.Session, Consts.CartSessionKey);
-            if (session == null)
-            {
-                var cart = new List<CartItem>();
-                cart.Add(new CartItem { Film = film, Quantity = 1, Value = film.Price });
-                SessionHelper.SetObjectAsJson(HttpContext.Session, Consts.CartSessionKey, cart);
-            }
-            else
-            {
-                var index = GetIndex(Id, session);
-                if (index != -1)
-                {
-                    session[index].Quantity++;
-                    session[index].Value += film.Price;
-                }
-                else
-                {
-                    session.Add(new CartItem { Film = film, Quantity = 1, Value = film.Price });
-                }
-                SessionHelper.SetObjectAsJson(HttpContext.Session, Consts.CartSessionKey, session);
-            }
+            CartManager.AddToCart(HttpContext.Session,db,Id);
             return RedirectToAction("Index", "Cart");
         }
         [HttpPost]
@@ -63,22 +38,9 @@ namespace PawKarTIWypozyczalnia.Controllers
                 ItemId = Id,
                 ItemQuantity = CartManager.RemoveFromCart(HttpContext.Session,Id),
                 TotalValue = CartManager.GetCartValue(HttpContext.Session),
-                ItemValue = CartManager.GetCartValueItem(HttpContext.Session)
+                ItemValue = CartManager.GetCartValueItem(HttpContext.Session,Id)
             };
             return Json(model);
-        }
-
-        private int GetIndex(int Id, List<CartItem> cart) 
-        {
-            for (int i = 0; i < cart.Count;i++)
-            {
-                if (cart[i].Film.Id == Id)
-                {
-
-                    return i;
-                }
-            }
-            return -1;
         }
     }
 }

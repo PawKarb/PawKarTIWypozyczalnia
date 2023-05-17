@@ -21,8 +21,8 @@
                 <tr id="itemCart_@item.Film.Id">
                     <td>@item.Film.Title</td>
                     <td id="quantity_@item.Film.Id">@item.Quantity</td>
-                    <td>@item.Value</td>
-                    <td class="trash" data-itemid="@item.Film.Id">Kasuj</td>
+                    <td id="value_@item.Film.Id">@item.Value</td>
+                    <td class="trash"><span class="id-item" style="display: none;">@item.Film.Id</span>Kasuj</td>
                 </tr>
             }
             </tbody>
@@ -41,20 +41,20 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript">
         $(".trash").click(()=>{
-            let idCartItem = $(this).data('itemid');
+            let idCartItem = $(this).(".id-item").text();
             if(idCartItem != '')
             {
-                console.log(idCartItem);
                 $.post("/Cart/RemoveItem", { "Id": idCartItem }, (response) => {
-                    console.log(response);
-                    if(response.itemQuantity == 0)
+                    if(parseInt(response.itemQuantity) === 0)
                     {
                         $("#itemCart_"+response.itemId).fadeOut("slow");
                     }else
                     {
                         $("#quantity_"+response.itemId).text(response.itemQuantity);
+                        $("#value_" + response.itemId).text(response.itemValue);
+
                     }
-                    $("#total_value").text(response.totalValue);
+                    $(".total_value").text("Razem: "+response.totalValue+" zł");
                 });
             }
         });
