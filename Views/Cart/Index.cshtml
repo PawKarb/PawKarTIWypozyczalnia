@@ -22,7 +22,7 @@
                     <td>@item.Film.Title</td>
                     <td id="quantity_@item.Film.Id">@item.Quantity</td>
                     <td id="value_@item.Film.Id">@item.Value</td>
-                    <td class="trash"><span class="id-item" style="display: none;">@item.Film.Id</span>Kasuj</td>
+                    <td class="trash" data-id="@item.Film.Id">Kasuj</td>
                 </tr>
             }
             </tbody>
@@ -41,7 +41,8 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript">
         $(".trash").click(()=>{
-            let idCartItem = $(this).(".id-item").text();
+            let idCartItem = $(this).attr("data-id");
+            console.log(idCartItem);
             if(idCartItem != '')
             {
                 $.post("/Cart/RemoveItem", { "Id": idCartItem }, (response) => {

@@ -1,0 +1,24 @@
+﻿@model PawKarTIWypozyczalnia.ViewModels.LoginViewModel
+
+<p class="alert-warning">
+    @ViewBag.result
+    @Html.ValidationSummary()
+</p>
+
+@using (Html.BeginForm("Login", "Account"))
+{
+    <ul class="list-group list-group-flush">
+        <li class=list-group-item>
+            Login:
+            @Html.TextBoxFor(f=>f.Login, new {@class = "form-control", @required = true})
+            <span class="alert-warning">@Html.ValidationMessageFor(f => f.Login)</span>
+        </li>
+        <li class=list-group-item>
+            Hasło:
+            @Html.TextBoxFor(f=>f.Password, new {@class = "form-control", @required = true, @type="password"})
+            <span class="alert-warning">@Html.ValidationMessageFor(f => f.Password)</span>
+        </li>
+        <br />
+    </ul>
+    <button type="submit" class="w-10 btn btn-success">Zaloguj</button>
+}

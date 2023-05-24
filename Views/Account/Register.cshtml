@@ -1,0 +1,43 @@
+﻿@model PawKarTIWypozyczalnia.ViewModels.RegisterViewModel
+
+<p class="alert-warning">
+    @ViewBag.result
+    @Html.ValidationSummary()
+</p>
+
+@using (Html.BeginForm("Register", "Account")){
+    <ul class="list-group list-group-flush">
+        <li class=list-group-item>
+            Email:
+            @Html.TextBoxFor(f=>f.Email, new {@class = "form-control", @required = true})
+            <span class="alert-warning">@Html.ValidationMessageFor(f => f.Email)</span>
+        </li>
+        <li class=list-group-item>
+            Login:
+            @Html.TextBoxFor(f=>f.UserName, new {@class = "form-control", @required = true})
+            <span class="alert-warning">@Html.ValidationMessageFor(f => f.UserName)</span>
+        </li>
+        <li class=list-group-item>
+            Imię:
+            @Html.TextBoxFor(f=>f.FirstName, new {@class = "form-control"})
+            <span class="alert-warning">@Html.ValidationMessageFor(f => f.FirstName)</span>
+        </li>
+        <li class=list-group-item>
+            Nazwisko:
+            @Html.TextBoxFor(f=>f.LastName, new {@class = "form-control"})
+            <span class="alert-warning">@Html.ValidationMessageFor(f => f.LastName)</span>
+        </li>
+        <li class=list-group-item>
+            Hasło:
+            @Html.TextBoxFor(f=>f.Password, new {@class = "form-control", @required = true, @type="password"})
+            <span class="alert-warning">@Html.ValidationMessageFor(f => f.Password)</span>
+        </li>
+        <li class=list-group-item>
+            Powtórz hasło:
+            @Html.TextBoxFor(f=>f.ConfirmPassword, new {@class = "form-control", @required = true, @type="password"})
+            <span class="alert-warning">@Html.ValidationMessageFor(f => f.ConfirmPassword)</span>
+        </li>
+        <br />
+    </ul>
+    <button type="submit" class="w-10 btn btn-success">Zarejestruj</button>
+}

@@ -6,7 +6,7 @@ namespace PawKarTIWypozyczalnia.DAL
 {
     public class IdentityAppContext : IdentityDbContext<AppUser, AppRole, int>
     {
-        public IdentityAppContext(DbContextOptions options) : base(options)
+        public IdentityAppContext(DbContextOptions<IdentityAppContext> options) : base(options)
         {
         }
     }

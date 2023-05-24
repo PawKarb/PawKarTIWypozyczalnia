@@ -73,7 +73,7 @@ namespace PawKarTIWypozyczalnia.Infrastructure
             {
                 if (id == item.Film.Id) 
                 {
-                    return cart.Sum(i => i.Value);
+                    return item.Value;
                 }
             }
             return 0;

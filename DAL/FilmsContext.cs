@@ -8,7 +8,7 @@ namespace PawKarTIWypozyczalnia.DAL
         public DbSet<Film> Films { get; set; }
         public DbSet<Kategoria> Kategorie { get; set; }
 
-        public FilmsContext(DbContextOptions options) : base(options)
+        public FilmsContext(DbContextOptions<FilmsContext> options) : base(options)
         {
         }
 
